@@ -1,6 +1,7 @@
 import numpy as np
 from scipy.sparse import lil_matrix, csc_matrix, vstack, hstack
 from ogb.graphproppred import PygGraphPropPredDataset, Evaluator
+import sys
 
 # Load the dataset 
 dataset = PygGraphPropPredDataset(name='ogbg-molhiv')
@@ -193,14 +194,18 @@ graphlabels = np.array(graphlabels)
 
 edge_index = transform_edge_index(dataset)
 
-H = 1
-p = 2
-tau = 1
+H = int(sys.argv[1])
+p = float(sys.argv[2])
+tau = float(sys.argv[3])
+
+assert H > 0
+assert p > 0
+assert tau > 0
 
 init_nodelabels, init_edgeweights, nodelabel_dict, u_id = PWL_transform_feature(dataset,edge_index,tau)
 weighted_graphs = [(init_nodelabels,u_id,init_edgeweights)]
 cur_nodelabels = init_nodelabels
-for h in range(H):
+for h in range(H-1):
   next_nodelabels, next_edgeweights, nodelabel_dict, u_id = PWL_iteration(cur_nodelabels,edge_index,nodelabel_dict,u_id,p,tau)
   weighted_graphs.append((next_nodelabels,u_id,next_edgeweights))
   cur_nodelabels = next_nodelabels
