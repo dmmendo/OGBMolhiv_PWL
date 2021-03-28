@@ -14,10 +14,7 @@ Original file is located at
 
 import numpy as np
 from scipy.sparse import lil_matrix, csc_matrix, vstack, hstack
-import torch
 from ogb.graphproppred import PygGraphPropPredDataset, Evaluator
-from torch_geometric.data import DataLoader
-from tqdm.notebook import tqdm
 
 # Load the dataset 
 dataset = PygGraphPropPredDataset(name='ogbg-molhiv')
@@ -270,3 +267,7 @@ print('test (avg,std-dev) roc-auc:')
 print((np.mean(test_results),np.std(test_results)))
 print('validation (avg,std-dev) roc-auc:')
 print((np.mean(valid_results),np.std(valid_results)))
+
+import scipy
+print(np.version.version)
+print(scipy.version.version)
