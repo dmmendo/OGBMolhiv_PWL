@@ -23,7 +23,7 @@ To train and evaluate the model on 10 different seeds, specify model hyperparame
 ``` 
     python molhiv_pwl.py [-pwl or -pwlc] [H] [p] [τ]
 ```
-Example of executing PWLC with H=2, p=2, and τ=1:
+Example of executing P-WL-C with H=2, p=2, and τ=1:
 ``` 
     python molhiv_pwl.py -pwlc 2 2 1
 ```
