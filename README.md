@@ -1,6 +1,6 @@
 ## Implementation of a Persistent Weisfeiler–Lehman Procedure for Graph Classification
 
-This project is an implementation of a Persistent Weisfeiler-Lehman (PWL) procedure based on the Stanford Molhiv OGB (1.3.0) dataset. PWL is a graph classification method proposed by Bastian Rieck, Christian Bock, and Karsten Borgwardt in ICML 2019. The original paper can be viewed [here](http://proceedings.mlr.press/v97/rieck19a/rieck19a.pdf).
+This project is an implementation of a Persistent Weisfeiler-Lehman (P-WL) procedure based on the Stanford Molhiv OGB (1.3.0) dataset. P-WL is a graph classification method proposed by Bastian Rieck, Christian Bock, and Karsten Borgwardt in ICML 2019. The original paper can be viewed [here](http://proceedings.mlr.press/v97/rieck19a/rieck19a.pdf).
 
 ### Note:
 
@@ -41,9 +41,9 @@ Results below fix p=2, τ=1, and n_estimators = 1000
 
 | Model              |Test Accuracy    |Valid Accuracy   | Parameters    | Hardware |
 | ------------------ |--------------   | --------------- | -------------- |----------|
-| PWL (H=1)     | 0.7532  ± 0.0033 | 0.8251  ± 0.0051 | 468,369  | CPU |
-| PWL (H=2)       | 0.7936  ± 0.0042 | 0.8368  ± 0.0047 | 473,489 | CPU |
-| PWL (H=3)       | 0.7858  ± 0.0061 | 0.8054  ± 0.0068 | 1,162,515 | CPU |
-| PWLC (H=1)  | 0.7665  ± 0.0036 | 0.8204  ± 0.0054 | 1,470,905  | CPU |
-| PWLC (H=2)    | 0.8039  ± 0.0040 | 0.8279  ± 0.0059 | 4,600,000  | CPU |
-| PWLC (H=3) | 0.7886  ± 0.0050 | 0.7981  ± 0.0064 | 1,879,664  | CPU |
+| P-WL (H=1)     | 0.7532  ± 0.0033 | 0.8251  ± 0.0051 | 468,369  | CPU |
+| P-WL (H=2)       | 0.7936  ± 0.0042 | 0.8368  ± 0.0047 | 473,489 | CPU |
+| P-WL (H=3)       | 0.7858  ± 0.0061 | 0.8054  ± 0.0068 | 1,162,515 | CPU |
+| P-WL-C (H=1)  | 0.7665  ± 0.0036 | 0.8204  ± 0.0054 | 1,470,905  | CPU |
+| P-WL-C (H=2)    | 0.8039  ± 0.0040 | 0.8279  ± 0.0059 | 4,600,000  | CPU |
+| P-WL-C (H=3) | 0.7886  ± 0.0050 | 0.7981  ± 0.0064 | 1,879,664  | CPU |
