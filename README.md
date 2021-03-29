@@ -4,11 +4,11 @@ This project is an implementation of a Persistent Weisfeiler-Lehman (PWL) proced
 
 ### Note:
 
-We implement PWL and PWLC using a random forest classifier.
+We implement PWL and PWLC with a random forest classifier.
 
 ### Install environment:
 ``` 
-    pip install scipy
+    pip install scipy=0.24.1
     pip install numpy
     pip install sklearn
     pip install torch==1.8.0+cpu -f https://download.pytorch.org/whl/torch_stable.html
@@ -19,7 +19,7 @@ We implement PWL and PWLC using a random forest classifier.
 ```
 
 ### Usage:
-To train and evaluate the model on 10 different seeds, specify model parameters and execute:
+To train and evaluate the model on 10 different seeds, specify model hyperparameters and execute:
 ``` 
     python molhiv_pwl.py [-pwl or -pwlc] [H] [p] [τ]
 ```
@@ -28,8 +28,16 @@ Example of executing PWLC with H=2, p=2, and τ=1:
     python molhiv_pwl.py -pwlc 2 2 1
 ```
 
+ 
+### **hyperparameters**:
+
+```
+H: [1,2*,3], p: [2*,3], τ: [1*,2], n_estimators: [100,1000*]
+```
+
+
 ### Reference performance for Molhiv OGB:
-Results below fix p=2 and τ=1
+Results below fix p=2, τ=1, and n_estimators = 1000
 
 | Model              |Test Accuracy    |Valid Accuracy   | Parameters    | Hardware |
 | ------------------ |--------------   | --------------- | -------------- |----------|
