@@ -4,7 +4,7 @@ This project is an implementation of a Persistent Weisfeiler-Lehman (P-WL) proce
 
 ### Note:
 
-We implement PWL and PWLC with a random forest classifier.
+We implement P-WL and P-WL-C with a random forest classifier.
 
 ### Install environment:
 ``` 
