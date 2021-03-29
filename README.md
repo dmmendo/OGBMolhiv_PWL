@@ -29,7 +29,7 @@ Example of executing PWLC with H=2, p=2, and τ=1:
 ```
 
  
-### **hyperparameters**:
+### Explored Hyperparameters:
 
 ```
 H: [1,2*,3], p: [2*,3], τ: [1*,2], n_estimators: [100,1000*]
