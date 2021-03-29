@@ -8,9 +8,9 @@ We implement PWL and PWLC with a random forest classifier.
 
 ### Install environment:
 ``` 
-    pip install scipy=0.24.1
+    pip install scipy
     pip install numpy
-    pip install sklearn
+    pip install sklearn=0.24.1
     pip install torch==1.8.0+cpu -f https://download.pytorch.org/whl/torch_stable.html
     pip install torch-scatter -f https://pytorch-geometric.com/whl/torch-1.8.0+cpu.html
     pip install torch-sparse -f https://pytorch-geometric.com/whl/torch-1.8.0+cpu.html
