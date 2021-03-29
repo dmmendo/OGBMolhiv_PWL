@@ -1,6 +1,6 @@
 ## Implementation of a Persistent Weisfeiler–Lehman Procedure for Graph Classification
 
-This project is an implementation of a Persistent Weisfeiler-Lehman (PWL) procedure based on the Stanford Molhiv OGB (1.3.1) dataset. PWL is a graph classification method proposed by Bastian Rieck, Christian Bock, and Karsten Borgwardt in ICML 2019. The original paper can be viewed [here](http://proceedings.mlr.press/v97/rieck19a/rieck19a.pdf).
+This project is an implementation of a Persistent Weisfeiler-Lehman (PWL) procedure based on the Stanford Molhiv OGB (1.3.0) dataset. PWL is a graph classification method proposed by Bastian Rieck, Christian Bock, and Karsten Borgwardt in ICML 2019. The original paper can be viewed [here](http://proceedings.mlr.press/v97/rieck19a/rieck19a.pdf).
 
 ### Note:
 
