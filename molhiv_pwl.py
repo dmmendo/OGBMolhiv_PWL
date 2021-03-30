@@ -183,6 +183,13 @@ def sparse_split(kernel,train_idx,valid_idx,test_idx):
   Xtest = lil_kernel[test_idx].tocsc()
   return Xtrain,Xvalid,Xtest
 
+def count_params(clf):
+  total = 0
+  for tree in clf.estimators_:
+    treeObj = tree.tree_
+    total += treeObj.node_count
+  return total
+
 train_idx = split_idx['train'].numpy()
 valid_idx = split_idx['valid'].numpy()
 test_idx = split_idx['test'].numpy()
@@ -194,9 +201,9 @@ graphlabels = np.array(graphlabels)
 
 edge_index = transform_edge_index(dataset)
 
-H = int(sys.argv[1])
-p = float(sys.argv[2])
-tau = float(sys.argv[3])
+H = int(sys.argv[2])
+p = float(sys.argv[3])
+tau = float(sys.argv[4])
 
 assert H > 0
 assert p > 0
@@ -214,8 +221,13 @@ for h in range(H-1):
 
 cmp_persist, cyc_persist = get_persistence(weighted_graphs,edge_index)
 
-kernel_list = PWLC_compressed(weighted_graphs,edge_index,cmp_persist,cyc_persist)
-#kernel_list = PWL_compressed(weighted_graphs,cmp_persist)
+if sys.argv[1] == '-pwlc':
+  kernel_list = PWLC_compressed(weighted_graphs,edge_index,cmp_persist,cyc_persist)
+elif sys.argv[1] == '-pwl':
+  kernel_list = PWL_compressed(weighted_graphs,cmp_persist)
+else:
+  print("invalid option: please specify either '-pwl' or 'pwlc'")
+  exit()
 
 #Setup data split and labels
 
@@ -233,6 +245,7 @@ num_seeds = 10
 
 valid_results = []
 test_results = []
+pcount_results = []
 for seed in range(num_seeds):
   clf = RandomForestClassifier(random_state=seed,n_estimators=1000).fit(Xtrain,graphlabels[train_idx])
   y_pred_valid = clf.predict_proba(Xvalid)[:, 1]
@@ -243,6 +256,11 @@ for seed in range(num_seeds):
   test_dict = { "y_true":graphlabels[test_idx].reshape(len(test_idx),1), "y_pred":y_pred_test }
   valid_results.append(evaluator.eval(valid_dict)[dataset.eval_metric])
   test_results.append(evaluator.eval(test_dict)[dataset.eval_metric])
+  pcount_results.append(count_params(clf))
+
+print('model parameter counts:')
+for seed in range(num_seeds):
+  print("\tseed",seed,':',pcount_results[seed])
 
 print('test results:')
 for seed in range(num_seeds):
